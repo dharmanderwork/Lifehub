@@ -112,8 +112,7 @@ export function DevUtilities() {
             onChange={(e) => setTextCount(e.target.value)}
           />
           <div className="text-xs text-muted-foreground font-mono">
-            Chars: {textCount.length} | Words: {textCount.trim() ? textCount.trim().split(/\s+/).length : 0} | Lines: {textCount ? textCount.split("
-").length : 0}
+            Chars: {textCount.length} | Words: {textCount.trim() ? textCount.trim().split(/\s+/).length : 0} | Lines: {textCount ? textCount.split("").length : 0}
           </div>
         </div>
 

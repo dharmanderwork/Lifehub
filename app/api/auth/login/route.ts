@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
       devModeUnlocked: user.devModeUnlocked,
       devModeEnabled: user.devModeEnabled,
       onboardingCompleted: user.onboardingCompleted,
-      dailyModules: user.dailyModules
+      dailyModules: (user as any).dailyModules ?? null
     };
 
     const res = NextResponse.json({ message: "Logged in successfully.", token, user: sanitizedUser });
