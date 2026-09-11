@@ -1,4 +1,4 @@
-'use client'
+
 import { redirect } from "next/navigation";
 import { getSessionUser } from "@/lib/auth";
 import { Navigation } from "@/components/Navigation";
@@ -59,7 +59,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-app md:pl-64 pb-20 md:pb-10">
-      <Navigation user={user} onOpenQuickAdd={() => {}} />
+      <Navigation user={user}  />
 
       <main className="max-w-6xl mx-auto p-4 md:p-8 space-y-6">
         <div>

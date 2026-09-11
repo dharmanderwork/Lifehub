@@ -51,7 +51,7 @@ export function Navigation({ user, onOpenQuickAdd }: NavProps) {
             <p className="text-xs text-muted-foreground mt-1">Life Operating System</p>
           </div>
         </div>
-
+{(pathname != "/dashboard" ) && (pathname != "/developer" )  &&
         <div className="px-4 mb-2">
           <button 
             onClick={onOpenQuickAdd}
@@ -60,7 +60,7 @@ export function Navigation({ user, onOpenQuickAdd }: NavProps) {
             <Plus className="w-4 h-4" /> Quick Add
           </button>
         </div>
-
+}
         <nav className="flex-1 px-3 space-y-1 overflow-y-auto">
           {mainTabs.map((tab) => {
             const Icon = tab.icon;
@@ -130,12 +130,14 @@ export function Navigation({ user, onOpenQuickAdd }: NavProps) {
       </nav>
 
       {/* Mobile Floating Action Button */}
+      {(pathname != "/dashboard" ) && (pathname != "/developer" )  &&
       <button
         onClick={onOpenQuickAdd}
         className="md:hidden fixed bottom-20 right-4 w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-blue-600 text-white flex items-center justify-center shadow-lg z-40"
       >
         <Plus className="w-6 h-6" />
       </button>
+}
     </>
   );
 }
