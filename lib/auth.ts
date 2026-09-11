@@ -61,14 +61,14 @@ export async function getSessionUser(req?: NextRequest) {
       fullName: true,
       currency: true,
       currencySymbol: true,
-      dateFormat: true,
-      theme: true,
+      // dateFormat: true,
+      // theme: true,
       officeRole: true,
       devModeUnlocked: true,
       devModeEnabled: true,
       onboardingCompleted: true,
-      dailyModules: true,
-      notificationSettings: true,
+      // dailyModules: true,
+      // notificationSettings: true,
       createdAt: true
     }
   });

@@ -82,6 +82,7 @@ model SavingsPot {
   updatedAt     DateTime             @updatedAt
   user          User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
   transactions  SavingsTransaction[]
+  goals         Goal[]
 }
 
 model SavingsTransaction {
@@ -112,6 +113,9 @@ model Goal {
   updatedAt     DateTime        @updatedAt
   user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   milestones    GoalMilestone[]
+
+  savingsPotId  Int?
+  savingsPot    SavingsPot?     @relation(fields: [savingsPotId], references: [id])
 }
 
 model GoalMilestone {
@@ -155,6 +159,9 @@ model Task {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  officeProjectId Int?
+officeProject    OfficeProject? @relation(fields: [officeProjectId], references: [id], onDelete: Cascade)
+
 }
 
 model Routine {
@@ -305,6 +312,7 @@ model OfficeProject {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tasks Task[]
 }
 
 model OfficeMeeting {
@@ -319,3 +327,4 @@ model OfficeMeeting {
   updatedAt   DateTime @updatedAt
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+

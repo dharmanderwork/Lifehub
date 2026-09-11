@@ -26,36 +26,44 @@ export async function GET(req: NextRequest) {
     where.status = { not: "Archived" };
   }
 
-  const tasks = await prisma.task.findMany({
-    where,
-    include: { relatedGoal: true, relatedProject: true },
-    orderBy: { dueDate: "asc" }
-  });
+ const tasks = await prisma.task.findMany({
+  where,
+  include: {
+    officeProject: true,
+  },
+  orderBy: { dueDate: "asc" }
+});
+
 
   return NextResponse.json({ tasks });
 }
-
 export async function POST(req: NextRequest) {
   const user = await getSessionUser(req);
   if (!user) return unauthorizedResponse();
 
   const body = await req.json();
+
   const task = await prisma.task.create({
     data: {
       userId: user.id,
       title: body.title,
       description: body.description || "",
       dueDate: body.due_date || "",
-      dueTime: body.due_time || "",
       priority: body.priority || "Medium",
       category: body.category || "General",
+      status: body.status || "To Do",
       recurrence: body.recurrence || "None",
-      isOffice: !!body.is_office,
       isDeveloper: !!body.is_developer,
-      relatedGoalId: body.related_goal_id ? parseInt(body.related_goal_id) : null,
-      relatedProjectId: body.related_project_id ? parseInt(body.related_project_id) : null
-    }
+
+      officeProjectId: body.related_project_id
+        ? parseInt(body.related_project_id)
+        : null,
+    },
+    include: {
+      officeProject: true,
+    },
   });
 
   return NextResponse.json(task, { status: 201 });
 }
+

@@ -18,26 +18,26 @@ export async function GET(req: NextRequest) {
     orderBy: { date: "desc" }
   });
 
-  const contacts = await prisma.officeContact.findMany({
-    where: { userId: user.id },
-    orderBy: { name: "asc" }
-  });
+  // const contacts = await prisma.officeContact.findMany({
+  //   where: { userId: user.id },
+  //   orderBy: { name: "asc" }
+  // });
 
-  const links = await prisma.officeLink.findMany({
-    where: { userId: user.id },
-    orderBy: { id: "desc" }
-  });
+  // const links = await prisma.officeLink.findMany({
+  //   where: { userId: user.id },
+  //   orderBy: { id: "desc" }
+  // });
 
-  const roleItems = await prisma.officeRoleItem.findMany({
-    where: { userId: user.id, role: user.officeRole }
-  });
+  // const roleItems = await prisma.officeRoleItem.findMany({
+  //   where: { userId: user.id, role: user.officeRole }
+  // });
 
   return NextResponse.json({
     role: user.officeRole,
     projects,
     meetings,
-    contacts,
-    links,
-    roleItems
+    // contacts,
+    // links,
+    // roleItems
   });
 }
