@@ -18,7 +18,7 @@ import {
 
 interface NavProps {
   user: any;
-  onOpenQuickAdd: () => void;
+  onOpenQuickAdd?: () => void;
 }
 
 export function Navigation({ user, onOpenQuickAdd }: NavProps) {
